@@ -1,3 +1,5 @@
+package com.exemplo;
+
 import com.sun.jna.Library;
 import com.sun.jna.Native;
 import java.util.Scanner;
@@ -151,7 +153,7 @@ public class Main {
             }
         }
 
-        scanner.close();
+        //scanner.close();
     }
 
 
