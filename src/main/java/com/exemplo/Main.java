@@ -93,24 +93,26 @@ public class Main {
     }
 
     public static void imprimirXML() {
-
-        try {
-            String caminho = escolherArquivoXML();
-            ImpressoraDLL.INSTANCE.ImprimeXMLSAT(caminho, 0);
-        } catch (Exception e) {
-                System.out.println(e.getMessage());
-        }
+        if (conexaoAberta) {
+            try {
+                String caminho = escolherArquivoXML();
+                ImpressoraDLL.INSTANCE.ImprimeXMLSAT(caminho, 0);
+            } catch (Exception e) {
+                    System.out.println(e.getMessage());
+            }
+        } else System.out.println("A Conexão não está aberta!");
     }
     public static void imprimirXMLCancel() {
-        
+
         var assQRCode = "Q5DLkpdRijIRGY6YSSNsTWK1TztHL1vD0V1Jc4spo/CEUqICEb9SFy82ym8EhBRZjbh3btsZhF+sjHqEMR159i4agru9x6KsepK/q0E2e5xlU5cv3m1woYfgHyOkWDNcSdMsS6bBh2Bpq6s89yJ9Q6qh/J8YHi306ce9Tqb/drKvN2XdE5noRSS32TAWuaQEVd7u+TrvXlOQsE3fHR1D5f1saUwQLPSdIv01NF6Ny7jZwjCwv1uNDgGZONJdlTJ6p0ccqnZvuE70aHOI09elpjEO6Cd+orI7XHHrFCwhFhAcbalc+ZfO5b/+vkyAHS6CYVFCDtYR9Hi5qgdk31v23w==";
-        
-        try {
-            String caminho = escolherArquivoXML();
-            ImpressoraDLL.INSTANCE.ImprimeXMLCancelamentoSAT(caminho, assQRCode, 0);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        if (conexaoAberta) {
+            try {
+                String caminho = escolherArquivoXML();
+                ImpressoraDLL.INSTANCE.ImprimeXMLCancelamentoSAT(caminho, assQRCode, 0);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        } else System.out.println("A Conexão não está aberta!");
     }
 
     public static void main(String[] args) {
