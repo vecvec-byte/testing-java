@@ -77,19 +77,19 @@ public class Main {
     }
 
     public static String escolherArquivoXML() throws Exception {
-    JFileChooser fileChooser = new JFileChooser();
-    FileNameExtensionFilter filtroXML = new FileNameExtensionFilter("Arquivos XML (*.xml)", "xml");
-    fileChooser.setFileFilter(filtroXML);
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filtroXML = new FileNameExtensionFilter("Arquivos XML (*.xml)", "xml");
+        fileChooser.setFileFilter(filtroXML);
 
-    int resultado = fileChooser.showOpenDialog(null);
+        int resultado = fileChooser.showOpenDialog(null);
 
-    if (resultado == JFileChooser.APPROVE_OPTION) {
-        File arquivoSelecionado = fileChooser.getSelectedFile();
-        return arquivoSelecionado.getAbsolutePath();
-    } else {
-        throw new Exception("Seleção cancelada pelo usuário.");
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+            File arquivoSelecionado = fileChooser.getSelectedFile();
+            return arquivoSelecionado.getAbsolutePath();
+        } else {
+            throw new Exception("Seleção cancelada pelo usuário.");
+        }
     }
-}
 
     public static void imprimirXML() {
         try {
