@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.io.FileInputStream;
 
-public class MainE {
+public class Main {
 
     // Interface que representa a DLL, usando JNA
     public interface ImpressoraDLL extends Library {
