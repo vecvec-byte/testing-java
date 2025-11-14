@@ -65,8 +65,9 @@ public class Main {
     }
 
     public static void configurarConexao() {
-        
+
     }
+
 
     public static void abrirConexao() {
         
@@ -92,17 +93,16 @@ public class Main {
     }
 
     public static void imprimirXML() {
+
         try {
             String caminho = escolherArquivoXML();
             ImpressoraDLL.INSTANCE.ImprimeXMLSAT(caminho, 0);
-
         } catch (Exception e) {
                 System.out.println(e.getMessage());
         }
-
-      
     }
     public static void imprimirXMLCancel() {
+        
         var assQRCode = "Q5DLkpdRijIRGY6YSSNsTWK1TztHL1vD0V1Jc4spo/CEUqICEb9SFy82ym8EhBRZjbh3btsZhF+sjHqEMR159i4agru9x6KsepK/q0E2e5xlU5cv3m1woYfgHyOkWDNcSdMsS6bBh2Bpq6s89yJ9Q6qh/J8YHi306ce9Tqb/drKvN2XdE5noRSS32TAWuaQEVd7u+TrvXlOQsE3fHR1D5f1saUwQLPSdIv01NF6Ny7jZwjCwv1uNDgGZONJdlTJ6p0ccqnZvuE70aHOI09elpjEO6Cd+orI7XHHrFCwhFhAcbalc+ZfO5b/+vkyAHS6CYVFCDtYR9Hi5qgdk31v23w==";
         
         try {
@@ -114,7 +114,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        System.out.println(ImpressoraDLL.INSTANCE.AbreConexaoImpressora(1, "i9", "USB", 0));
+        
         while (true) {
             System.out.println("\n*************************************************");
             System.out.println("**************** MENU IMPRESSORA *******************");
@@ -141,7 +141,7 @@ public class Main {
 
             switch (escolha) {
                 case "1":
-                    
+
                 case "2":
                     
                 case "3":
@@ -154,7 +154,6 @@ public class Main {
                     
                 case "6":
 					imprimirXML();
-
                 case "7":
                     imprimirXMLCancel();
                 case "8":
