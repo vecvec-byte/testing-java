@@ -3,7 +3,8 @@ package com.exemplo;
 import com.sun.jna.Library;
 import com.sun.jna.Native;
 import java.util.Scanner;
-import javax.swing.JFileChooser;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -16,7 +17,7 @@ public class Main {
 		
 		// Caminho completo para a DLL
     ImpressoraDLL INSTANCE = (ImpressoraDLL) Native.load(
-                "C:\\Users\\richard.spanhol\\Downloads\\Java-Aluno Graduacao\\E1_Impressora01.dll",
+                "/workspaces/testing-java/E1_Impressora01.dll",
                 ImpressoraDLL.class
         );
         
@@ -75,7 +76,45 @@ public class Main {
         
     }
 
+    public static String escolherArquivoXML() throws Exception {
+    JFileChooser fileChooser = new JFileChooser();
+    FileNameExtensionFilter filtroXML = new FileNameExtensionFilter("Arquivos XML (*.xml)", "xml");
+    fileChooser.setFileFilter(filtroXML);
+
+    int resultado = fileChooser.showOpenDialog(null);
+
+    if (resultado == JFileChooser.APPROVE_OPTION) {
+        File arquivoSelecionado = fileChooser.getSelectedFile();
+        return arquivoSelecionado.getAbsolutePath();
+    } else {
+        throw new Exception("Seleção cancelada pelo usuário.");
+    }
+}
+
+    public static void imprimirXML() {
+        try {
+            String caminho = escolherArquivoXML();
+            ImpressoraDLL.INSTANCE.ImprimeXMLSAT(caminho, 0);
+
+        } catch (Exception e) {
+                System.out.println(e.getMessage());
+        }
+
+      
+    }
+    public static void imprimirXMLCancel() {
+        var assQRCode = "Q5DLkpdRijIRGY6YSSNsTWK1TztHL1vD0V1Jc4spo/CEUqICEb9SFy82ym8EhBRZjbh3btsZhF+sjHqEMR159i4agru9x6KsepK/q0E2e5xlU5cv3m1woYfgHyOkWDNcSdMsS6bBh2Bpq6s89yJ9Q6qh/J8YHi306ce9Tqb/drKvN2XdE5noRSS32TAWuaQEVd7u+TrvXlOQsE3fHR1D5f1saUwQLPSdIv01NF6Ny7jZwjCwv1uNDgGZONJdlTJ6p0ccqnZvuE70aHOI09elpjEO6Cd+orI7XHHrFCwhFhAcbalc+ZfO5b/+vkyAHS6CYVFCDtYR9Hi5qgdk31v23w==";
+        
+        try {
+            String caminho = escolherArquivoXML();
+            ImpressoraDLL.INSTANCE.ImprimeXMLCancelamentoSAT(caminho, assQRCode, 0);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     public static void main(String[] args) {
+        System.out.println(ImpressoraDLL.INSTANCE.AbreConexaoImpressora(1, "i9", "USB", 0));
         while (true) {
             System.out.println("\n*************************************************");
             System.out.println("**************** MENU IMPRESSORA *******************");
@@ -114,32 +153,10 @@ public class Main {
                     
                     
                 case "6":
-						// --- IMPORTANTE ---
-						// Este trecho permite ao usuário escolher um arquivo XML no computador.
-						// Para funcionar, será necessário importar as classes de manipulação de arquivos e da interface gráfica:
-						// import java.io.*;                    // Para trabalhar com arquivos (ex: File, IOException)
-						// import javax.swing.*;                // Para usar o JFileChooser (janela de seleção de arquivos)
-						//
-						// A ideia: abrir uma janela para o usuário escolher o XML, ler o conteúdo do arquivo
-						// e enviar para a função que imprime o XML de cancelamento do SAT.
-						//
-						// >>> Os alunos deverão implementar as partes de leitura do arquivo (função lerArquivoComoString)
-						// e o controle de fluxo (switch/case, etc) conforme aprendido em aula.
+					imprimirXML();
 
                 case "7":
-                    // --- IMPORTANTE ---
-						// Este trecho permite ao usuário escolher um arquivo XML no computador.
-						// Para funcionar, será necessário importar as classes de manipulação de arquivos e da interface gráfica:
-						// import java.io.*;                    // Para trabalhar com arquivos (ex: File, IOException)
-						// import javax.swing.*;                // Para usar o JFileChooser (janela de seleção de arquivos)
-						//
-						// A ideia: abrir uma janela para o usuário escolher o XML, ler o conteúdo do arquivo
-						// e enviar para a função que imprime o XML de cancelamento do SAT.
-						//
-						// >>> Os alunos deverão implementar as partes de leitura do arquivo (função lerArquivoComoString)
-						// e o controle de fluxo (switch/case, etc) conforme aprendido em aula.
-                 
-                    
+                    imprimirXMLCancel();
                 case "8":
                     
                     
